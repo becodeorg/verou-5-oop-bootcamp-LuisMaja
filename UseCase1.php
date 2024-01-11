@@ -1,24 +1,24 @@
 <?php
 
-$bananaQuantity = 6;
-$bananaCost = 1;
+// $bananaQuantity = 6;
+// $bananaCost = 1;
 
-$appleQuantity = 3;
-$appleCost = 1.5;
+// $appleQuantity = 3;
+// $appleCost = 1.5;
 
-$wineQuantity = 2;
-$wineCost = 10;
+// $wineQuantity = 2;
+// $wineCost = 10;
 
-$totalCost = ($bananaQuantity * $bananaCost) + ($appleQuantity * $appleCost) + ($wineQuantity * $wineCost);
-echo "Total cost: €" . $totalCost . PHP_EOL;
+// $totalCost = ($bananaQuantity * $bananaCost) + ($appleQuantity * $appleCost) + ($wineQuantity * $wineCost);
+// echo "Total cost: €" . $totalCost . PHP_EOL;
 
-$wineTaxRate = 0.21;
-$wineTax = $wineQuantity * $wineCost * $wineTaxRate;
-echo "Wine tax: €" . $wineTax . PHP_EOL;
+// $wineTaxRate = 0.21;
+// $wineTax = $wineQuantity * $wineCost * $wineTaxRate;
+// echo "Wine tax: €" . $wineTax . PHP_EOL;
 
-$fruitTaxRate = 0.06;
-$fruitTax = (($bananaQuantity * $bananaCost) + ($appleQuantity * $appleCost)) * $fruitTaxRate;
-echo "Fruit tax: €" . $fruitTax . PHP_EOL;
+// $fruitTaxRate = 0.06;
+// $fruitTax = (($bananaQuantity * $bananaCost) + ($appleQuantity * $appleCost)) * $fruitTaxRate;
+// echo "Fruit tax: €" . $fruitTax . PHP_EOL;
 
 
 class Banana
@@ -29,6 +29,14 @@ class Banana
     public function __construct($quantity, $cost) {
         $this->quantity = $quantity;
         $this->cost = $cost;
+    }
+
+    public function getQuantity(){
+        return $this->quantity;
+    }
+
+    public function getCost(){
+        return $this->cost;
     }
 }
 
@@ -41,6 +49,14 @@ class Apple
         $this->quantity = $quantity;
         $this->cost = $cost;
     }
+
+    public function getQuantity(){
+        return $this->quantity;
+    }
+
+    public function getCost(){
+        return $this->cost;
+    }
 }
 
 class Wine
@@ -51,6 +67,14 @@ class Wine
     public function __construct($quantity, $cost) {
         $this->quantity = $quantity;
         $this->cost = $cost;
+    }
+
+    public function getQuantity(){
+        return $this->quantity;
+    }
+
+    public function getCost(){
+        return $this->cost;
     }
 }
 
@@ -64,6 +88,10 @@ class TotalPrice
         $this->banana = $banana;
         $this->apple = $apple;
         $this->wine = $wine;
+    }
+
+    public function calculateTotalCost() {
+        $bananaCost = $this->banana->getQuantity()
     }
 }
 
