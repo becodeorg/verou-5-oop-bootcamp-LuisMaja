@@ -101,11 +101,13 @@ class ShoppingCart
     private $banana;
     private $apple;
     private $wine;
+    private $totalCost;
 
     public function __construct($banana, $apple, $wine) {
         $this->banana = $banana;
         $this->apple = $apple;
         $this->wine = $wine;
+        $this->calculateTotalCost();
     }
 
     public function calculateTotalCost() {
@@ -113,9 +115,19 @@ class ShoppingCart
         $appleCost = $this->apple->getQuantity() * $this->apple->getCost();
         $wineCost = $this->wine->getQuantity() * $this->wine->getCost();
 
-        $totalCost = $bananaCost + $appleCost + $wineCost;
+        $this->totalCost = $bananaCost + $appleCost + $wineCost;
 
-        return $totalCost;
+        return $this->totalCost;
+    }
+
+    public function calculateTaxes() {
+        $bananaTax = $this->banana->getTax() * $this->banana->getCost();
+        $appleTax = $this->apple->getTax() * $this->apple->getCost();
+        $wineTax = $this->wine->getTax() * $this->wine->getCost();
+
+        $totalTax = $bananaTax + $appleTax + $wineTax;
+
+        return $totalTax;
     }
 }
 
@@ -125,6 +137,9 @@ $wine = new Wine(2, 10, 0.21);
 
 $shoppingCart = new ShoppingCart($banana, $apple, $wine);
 $totalPrice = $shoppingCart->calculateTotalCost();
-echo "Total cost : €" . $totalPrice . PHP_EOL;
+echo "Total cost: €" . $totalPrice . PHP_EOL;
+
+$totalTax = $shoppingCart->calculateTaxes();
+echo "Tax is: €" . $totalTax . PHP_EOL;
 
 ?>
