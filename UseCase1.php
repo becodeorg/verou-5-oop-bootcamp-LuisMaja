@@ -25,18 +25,24 @@ class Banana
 {
     private $quantity;
     private $cost;
+    private $tax;
 
-    public function __construct($quantity, $cost) {
+    public function __construct($quantity, $cost, $tax) {
         $this->quantity = $quantity;
         $this->cost = $cost;
+        $this->tax = $tax;
     }
 
-    public function getQuantity(){
+    public function getQuantity() {
         return $this->quantity;
     }
 
-    public function getCost(){
+    public function getCost() {
         return $this->cost;
+    }
+
+    public function getTax() {
+        return $this->tax;
     }
 }
 
@@ -44,10 +50,12 @@ class Apple
 {
     private $quantity;
     private $cost;
+    private $tax;
 
-    public function __construct($quantity, $cost) {
+    public function __construct($quantity, $cost, $tax) {
         $this->quantity = $quantity;
         $this->cost = $cost;
+        $this->tax = $tax;
     }
 
     public function getQuantity(){
@@ -56,6 +64,10 @@ class Apple
 
     public function getCost(){
         return $this->cost;
+    }
+
+    public function getTax() {
+        return $this->tax;
     }
 }
 
@@ -63,10 +75,12 @@ class Wine
 {
     private $quantity;
     private $cost;
+    private $tax;
 
-    public function __construct($quantity, $cost) {
+    public function __construct($quantity, $cost, $tax) {
         $this->quantity = $quantity;
         $this->cost = $cost;
+        $this->tax = $tax;
     }
 
     public function getQuantity(){
@@ -75,6 +89,10 @@ class Wine
 
     public function getCost(){
         return $this->cost;
+    }
+
+    public function getTax() {
+        return $this->tax;
     }
 }
 
@@ -101,9 +119,9 @@ class ShoppingCart
     }
 }
 
-$banana = new Banana(6, 1);
-$apple = new Apple(3, 1.5);
-$wine = new Wine(2, 10);
+$banana = new Banana(6, 1, 0.06);
+$apple = new Apple(3, 1.5, 0.06);
+$wine = new Wine(2, 10, 0.21);
 
 $shoppingCart = new ShoppingCart($banana, $apple, $wine);
 $totalPrice = $shoppingCart->calculateTotalCost();
