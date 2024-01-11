@@ -78,7 +78,7 @@ class Wine
     }
 }
 
-class TotalPrice
+class ShoppingCart
 {
     private $banana;
     private $apple;
@@ -91,7 +91,13 @@ class TotalPrice
     }
 
     public function calculateTotalCost() {
-        $bananaCost = $this->banana->getQuantity()
+        $bananaCost = $this->banana->getQuantity() * $this->banana->getCost();
+        $appleCost = $this->apple->getQuantity() * $this->apple->getCost();
+        $wineCost = $this->wine->getQuantity() * $this->wine->getCost();
+
+        $totalCost = $bananaCost + $appleCost + $wineCost;
+
+        return $totalCost;
     }
 }
 
@@ -99,5 +105,8 @@ $banana = new Banana(6, 1);
 $apple = new Apple(3, 1.5);
 $wine = new Wine(2, 10);
 
-$totalprice = new TotalPrice($banana, $apple, $wine);
+$shoppingCart = new ShoppingCart($banana, $apple, $wine);
+$totalPrice = $shoppingCart->calculateTotalCost();
+echo "Total cost : €" . $totalPrice . PHP_EOL;
+
 ?>
